@@ -17,13 +17,13 @@
 ### Asociation
 
 - has_many :items
-- has_many :item_prefectures
+- has_many :item_purchase
 
 ## item テーブル
 
 | Column          | Type       | Options                        |
 | -------         | ---------  | ------------------------------ |
-| item_name       | string     | null: false;                   |
+| name            | string     | null: false;                   |
 | introduction    | text       | null: false;                   |
 | price           | integer    | null: false;                   |
 | category_id     | integer    | null: false;                   |
