@@ -18,7 +18,6 @@
 
 - has_many :items
 - has_many :item_prefectures
-- has_one :order_address, thorough: item_purchase
 
 ## item テーブル
 
@@ -40,7 +39,6 @@
 
 - belongs_to :user
 - has_one :item_purchase
-- has_one :order_address, thorough: item_purchase
 
 
 ## item_purchase テーブル
