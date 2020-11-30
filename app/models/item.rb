@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :category
 
   with_options presence: true do
     validates :name
