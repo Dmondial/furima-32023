@@ -13,48 +13,66 @@ RSpec.describe Item, type: :model do
     end
 
     context '新規出品がうまくいかないとき' do
+      it 'imageが空だと登録できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
       it 'nameが空だと登録できない' do
-        @item.name = ''
+        @item.name = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'introductionが空では登録できない' do
-        @item.introduction = ''
+        @item.introduction = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Introduction can't be blank")
       end
       it 'categoryが空だと登録できない' do
-        @item.category_id = ''
+        @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'conditionが空では登録できない' do
-        @item.condition_id = ''
+        @item.condition_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition Select")
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
       it 'delivery_feeが空だと登録できない' do
-        @item.delivery_fee_id = ''
+        @item.delivery_fee_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee Select")
+        expect(@item.errors.full_messages).to include('Delivery fee Select')
       end
       it 'send_sourceが空では登録できない' do
-        @item.send_source_id = ''
+        @item.send_source_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Send source Select")
+        expect(@item.errors.full_messages).to include('Send source Select')
       end
       it 'send_timeが空だと登録できない' do
-        @item.send_time_id = ''
+        @item.send_time_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Send time Select")
+        expect(@item.errors.full_messages).to include('Send time Select')
       end
       it 'priceが空では登録できない' do
-        @item.price = ''
+        @item.price = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
+      it 'priceが299以下では登録できない' do
+        @item.price = '299'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
+      end
+      it 'priceが10000000以上では登録できない' do
+        @item.price = '10000000'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
+      end
+      it 'priceが半角数字以外では登録できない' do
+        @item.price = '５０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price Half-width number')
+      end
     end
   end
-
-
 end

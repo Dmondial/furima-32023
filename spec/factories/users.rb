@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     nickname              { Faker::Name.initials(number: 2) }
     email                 { Faker::Internet.free_email }
-    password = "abc123"
+    password = 'abc123'
     # ↓英数混同になる方法を考え中
     # password = ""
     # while password.include?(/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i) do
