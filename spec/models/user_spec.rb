@@ -10,25 +10,6 @@ RSpec.describe User, type: :model do
       it 'nickname、email、passwordとpassword_confirmation、last_name、first_name、last_name_kana、first_name_kana、dateが存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it 'passwordが6文字以上かつ半角英数字混合であれば登録できる' do
-        @user.password = 'abc123'
-        @user.password_confirmation = 'abc123'
-        expect(@user).to be_valid
-      end
-      it 'emailには@が含まれていれば登録できる' do
-        @user.email = 'test@test.comcom'
-        expect(@user).to be_valid
-      end
-      it 'ユーザー本名は漢字なら保存できる' do
-        @user.last_name = '御利羅'
-        @user.first_name = '御理央'
-        expect(@user).to be_valid
-      end
-      it 'ユーザー本名の振り仮名は全角カタカナであれば保存できる' do
-        @user.last_name_kana = 'ゴリラ'
-        @user.first_name_kana = 'マルフォイ'
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録がうまくいかないとき' do
@@ -46,7 +27,7 @@ RSpec.describe User, type: :model do
         @user.email = 'sample@sample.com'
         @user.save
         another_user = FactoryBot.build(:user)
-        another_user.email = 'sample@sample.com'
+        another_user.email = @user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
@@ -87,6 +68,11 @@ RSpec.describe User, type: :model do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+      it 'last_nameがアルファベットだと登録できない' do
+        @user.last_name = 'yamada'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name Full-width characters')
       end
       it 'last_nameが数字だと登録できない' do
         @user.last_name = '0000'
