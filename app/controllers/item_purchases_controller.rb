@@ -2,21 +2,22 @@ class ItemPurchasesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
+    @purchase_form = PurchaseForm.new
   end
 
   def create
-    @purchase_form = PpurchaseForm.new(item_purchase_params)   #「UserDonation」に編集
-    if @user_donation.valid?
-      @user_donation.save
-      redirect_to action: :index
+    @purchase_form = PurchaseForm.new(item_purchase_params)
+    if @purchase_form.valid?
+      @purchase_form.save
+      redirect_to items_path
     else
-      render action: :new
+      render action: :index, collection: @item = Item.find(params[:item_id])
     end
   end
 
   private
   def item_purchase_params
-    params.require(:item).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number)
+    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number)
   end
 
 end
