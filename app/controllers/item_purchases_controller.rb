@@ -5,7 +5,7 @@ class ItemPurchasesController < ApplicationController
   end
 
   def create
-    binding.pry
+    
   end
 
 end
