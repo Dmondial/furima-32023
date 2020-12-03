@@ -33,8 +33,10 @@ class ItemPurchasesController < ApplicationController
   end
 
   def move_to_index
-    item_user = Item.find(params[:item_id]) 
-    if item_user.user_id == current_user.id
+    item = Item.find(params[:item_id]) 
+    if item.user_id == current_user.id
+      redirect_to items_path
+    elsif item.item_purchase.present?
       redirect_to items_path
     end
   end
