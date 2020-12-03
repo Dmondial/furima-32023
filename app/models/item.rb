@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :category
   belongs_to :condition
-  belongs_to :send_source
+  belongs_to :prefecture
   belongs_to :send_time
 
   belongs_to :user
