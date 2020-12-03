@@ -24,14 +24,14 @@ RSpec.describe PurchaseForm, type: :model do
         expect(@purchase_form.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeにハイフンが無いと登録できない' do
-        @purchase_form.postal_code = "1234567"
+        @purchase_form.postal_code = '1234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Postal code Input correctly")
+        expect(@purchase_form.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'prefectureが0だと登録できない' do
         @purchase_form.prefecture_id = 0
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Prefecture Select")
+        expect(@purchase_form.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが空だと登録できない' do
         @purchase_form.city = nil
@@ -44,9 +44,9 @@ RSpec.describe PurchaseForm, type: :model do
         expect(@purchase_form.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが数字以外だと登録できない' do
-        @purchase_form.phone_number =  "一二三四五六七八九十零"
+        @purchase_form.phone_number = '一二三四五六七八九十零'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number Input only number")
+        expect(@purchase_form.errors.full_messages).to include('Phone number Input only number')
       end
       it 'user_idが空だと登録できない' do
         @purchase_form.user_id = nil
