@@ -1,4 +1,6 @@
 class ItemPurchasesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_index , only: :index
 
   def index
     @item = Item.find(params[:item_id])
@@ -28,6 +30,13 @@ class ItemPurchasesController < ApplicationController
       card: params[:token],    # カードトークン
       currency: 'jpy'                # 通貨の種類（日本円）
     )
+  end
+
+  def move_to_index
+    item_user = Item.find(params[:item_id]) 
+    if item_user.user_id == current_user.id
+      redirect_to items_path
+    end
   end
 
 end
