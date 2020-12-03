@@ -14,7 +14,7 @@
           <span>Sold Out!!</span>
         </div>
       <% end %>
-      
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -31,7 +31,7 @@
         <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-      <% else %>
+      <% elsif @item.item_purchase.nil? %>
         <%= link_to '購入画面に進む', item_item_purchases_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
