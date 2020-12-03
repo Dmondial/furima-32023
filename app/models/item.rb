@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   belongs_to :send_time
 
   belongs_to :user
-  has_one :category
+  has_one :item_purchase
+  # has_one :category
   has_one_attached :image
 
   with_options presence: true do
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
       validates :category_id
       validates :condition_id
       validates :delivery_fee_id
-      validates :send_source_id
+      validates :prefecture_id
       validates :send_time_id
     end
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
