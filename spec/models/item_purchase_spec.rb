@@ -7,7 +7,7 @@ RSpec.describe ItemPurchase, type: :model do
 
   describe '商品購入機能' do
     context '商品購入がうまくいくとき' do
-      it 'image、name、introduction、category、condition、delivery_fee、send_source、send_time、priceが存在すれば登録できる' do
+      it '正しく入力されていればできる' do
         expect(@item_purchase).to be_valid
       end
     end

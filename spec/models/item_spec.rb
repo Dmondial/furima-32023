@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '新規商品出品' do
     context '新規商品出品がうまくいくとき' do
-      it 'image、name、introduction、category、condition、delivery_fee、send_source、send_time、priceが存在すれば登録できる' do
+      it 'image、name、introduction、category、condition、delivery_fee、prefecture、send_time、priceが存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -43,8 +43,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery fee Select')
       end
-      it 'send_sourceが空では登録できない' do
-        @item.send_source_id = nil
+      it 'prefectureが空では登録できない' do
+        @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Send source Select')
       end

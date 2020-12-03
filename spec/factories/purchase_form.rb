@@ -1,9 +1,9 @@
 FactoryBot.define do
-  factory :item_purchase do
-    number {"4242424242424242"}
-    month {"12"}
-    year {"24"}
-    code {"123"}
+  factory :purchase_form do
+    # number {"4242424242424242"}
+    # month {"12"}
+    # year {"24"}
+    # code {"123"}
     postal_code {"123-4567"}
     prefecture_id {15}
     city {"横浜市"}
@@ -11,9 +11,9 @@ FactoryBot.define do
     building_name {"なんとかbulding"}
     phone_number {"00123456789"}
 
-    association :item
-    association :user
-    association :item_purchase
-  end
+    token {"0a0a0a"}
+    user_id {1}
+    item_id {2}
 
+  end
 end
