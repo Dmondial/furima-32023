@@ -20,7 +20,6 @@ const pay = () => {
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        debugger;
       }
 
       document.getElementById("card-number").removeAttribute("name");
@@ -29,21 +28,9 @@ const pay = () => {
       document.getElementById("card-exp-year").removeAttribute("name");
 
       document.getElementById("charge-form").submit();
-      
-
      
     });
   });
 };
 
-// const erasing = () => {
-//   document.getElementById("postal-code").removeAttribute("name");
-//   document.getElementById("prefecture").removeAttribute("name");
-//   document.getElementById("city").removeAttribute("name");
-//   document.getElementById("addresses").removeAttribute("name");
-//   document.getElementById("building").removeAttribute("name");
-//   document.getElementById("phone-number").removeAttribute("name");
-// }
-
-// window.addEventListener("load", erasing)
 window.addEventListener("load", pay)
