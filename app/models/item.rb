@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :send_time
 
   belongs_to :user
-  has_one :item_purchases
+  has_one :item_purchase
   # has_one :category
   has_one_attached :image
 
