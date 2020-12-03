@@ -1,9 +1,9 @@
 class ItemPurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index , only: :index
+  before_action :item_data , only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_form = PurchaseForm.new
   end
 
@@ -14,7 +14,7 @@ class ItemPurchasesController < ApplicationController
       @purchase_form.save
       redirect_to items_path
     else
-      render action: :index, collection: @item = Item.find(params[:item_id])
+      render action: :index, collection: @item
     end
   end
 
@@ -39,6 +39,10 @@ class ItemPurchasesController < ApplicationController
     elsif item.item_purchase.present?
       redirect_to items_path
     end
+  end
+
+  def item_data
+    @item = Item.find(params[:item_id])
   end
 
 end

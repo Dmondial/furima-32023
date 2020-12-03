@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :purchase_form do
-    # number {"4242424242424242"}
-    # month {"12"}
-    # year {"24"}
-    # code {"123"}
+
     postal_code {"123-4567"}
     prefecture_id {15}
     city {"横浜市"}
