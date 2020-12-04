@@ -21,7 +21,7 @@ RSpec.describe ItemPurchase, type: :model do
       it 'prefectureが0だと登録できない' do
         @item_purchase.prefecture_id = 0
         @item_purchase.valid?
-        expect(@item_purchase.errors.full_messages).to include("Prefecture Select")
+        expect(@item_purchase.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが空だと登録できない' do
         @item_purchase.city = nil
@@ -34,9 +34,9 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが数字以外だと登録できない' do
-        @item_purchase.postal_code =  "一二三四五六七八九十零"
+        @item_purchase.postal_code = '一二三四五六七八九十零'
         @item_purchase.valid?
-        expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
+        expect(@item_purchase.errors.full_messages).to include('Phone number Input only number')
       end
     end
   end
